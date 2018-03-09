@@ -14,6 +14,10 @@ var connection = mysql.createConnection(
 
 	});
 
+//declare variables to capture user inputs for item # and quantity desired.
+var item = 0;
+var qty = 0;
+
 connection.connect(function(err)
 	{
 		if (err)
@@ -57,24 +61,57 @@ function shop()
 		name: "item",
 		type: "input",
 		message: "Please enter the stock number of the item you'd like to purchase: "	
-	}).then(function quantity()
+	}).then(function quantity(answer)
 	{
+		var item = answer.item;
+		console.log(item);
+
 		inquirer.prompt
 		({
 			name: "quantity",
 			type: "input",
 			message: "Please enter the quantity of this item you'd like to purchase: "
-		})
+		}).then(function checkInv(answer)
+		{
+			var qty = answer.quantity;
+			console.log(qty);
+
+			console.log("One moment, let me check the backroom.");
+
+			//set timeout for dramatic effect?
+
+
+			//write connection.query to pull on-hand qty of customer's selected item
+			connection.query("SELECT stock_qty FROM products WHERE item_id="+item, function(err,res)
+				{
+					if (err) throw err;
+
+					//(2) compare query result to customer qty request
+					
+					if (qty < res)
+					{
+						console.log(qty);
+						console.log(parseInt(res));
+					}
+
+
+				});
+			console.log();
+			//(2A) if on-hand > than request then run purchase routine; decrement the on-hand inv for selected item
+			//(2B) else, sorry don't have enough to fullfill your order then end? return to shop/choice?
+
+			
+		});
 	});
 
-checkInv();
+			
+// checkInv();
 }
 
-function checkInv()
-{
-	console.log("One moment, let me check the backroom.");
-	connection.end();
-}
+// function checkInv()
+// {
+	
+// }
 
 
 //notes: build a recursive functions to run ops before rolling to the connection.end statement?
