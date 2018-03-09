@@ -17,6 +17,7 @@ var connection = mysql.createConnection(
 //declare variables to capture user inputs for item # and quantity desired.
 var item = 0;
 var qty = 0;
+var supply = 0;
 
 connection.connect(function(err)
 	{
@@ -85,18 +86,36 @@ function shop()
 			connection.query("SELECT stock_qty FROM products WHERE item_id="+item, function(err,res)
 				{
 					if (err) throw err;
+					supply = parseInt(res[0].stock_qty);
+					console.log("supply: ",supply);
 
 					//(2) compare query result to customer qty request
 					
 					if (qty < res)
 					{
+						function purchase()
+						{
+							var query = connection.query("UPDATE products SET ? WHERE ?", 
+								[
+								{
+									stock_qty: supply - qty
+								},
+								{
+									item_id: item
+								}]);
+						}
+						purchase();
 						console.log(qty);
-						console.log(parseInt(res));
+						console.log(supply);
 					}
 
+				console.log("Post-purchase inv: ",supply-qty);
 
 				});
-			console.log();
+
+
+
+
 			//(2A) if on-hand > than request then run purchase routine; decrement the on-hand inv for selected item
 			//(2B) else, sorry don't have enough to fullfill your order then end? return to shop/choice?
 
