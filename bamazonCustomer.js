@@ -71,7 +71,7 @@ function poSale()
 
 		setTimeout(function()
 		{
-			console.log("Thank you for your purchase!");
+			console.log("Thank you for shopping bamazon!");
 			connection.end();
 		}, 
 		3000);
