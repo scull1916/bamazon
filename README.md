@@ -1,5 +1,4 @@
-# Welcome to bamazon
-a node.js eCommerce site
+# Welcome to bamazon - a node.js eCommerce site
 ========================
 
 ## Overview
