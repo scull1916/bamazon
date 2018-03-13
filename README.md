@@ -10,5 +10,12 @@
 ![The application launches and displays the store](assets/bamazonLaunch.png)
 3. Once you have made your selection, enter the `item number` where you are prompted. Click on **`Enter`**.
 4. Next, you will be prompted to enter the quantity of the item you wish to purchase. Enter the amount and click on **`Enter`**.
+![Customer selects item and quantity to purchase](assets/customerSelect.png)
 	* If there is not an ample supply in the on-hand inventory, **`bamazon`** will send you a message letting you know that it cannot fulfill your order.
+	![There isn't enough inventory to fulfill the order](assets/sorryNoMas.png)
 5. **`bamazon`** will tally up your order by multiplying the item's `price` and the quanity you indicated. A message will appear indicating the summary of your order and the total amount due. The application will then end with an appropriate sign-off message.
+![The order is complete: summary and closing message](assets/saleComplete.png)
+
+## The bamazon database
+* As mentioned, this application uses a **`MySQL`** database to store information on the items for sale including stock positions:
+![bamazon database](assets/bamazonDb.png)
