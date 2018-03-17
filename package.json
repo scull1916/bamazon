@@ -1,0 +1,24 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "## Overview **`bamazon`** is a Command Line Application (`CLI`) built to connect with a **`MySQL`** database. The database holds information about the products being offered through the storefront such as: `item numbers`, `product descriptions`, `prices`, and `current on-hand inventory`.",
+  "main": "bamazonCustomer.js",
+  "dependencies": {
+    "inquirer": "^5.1.0",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scull1916/bamazon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/scull1916/bamazon/issues"
+  },
+  "homepage": "https://github.com/scull1916/bamazon#readme"
+}
